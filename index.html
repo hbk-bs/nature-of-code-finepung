@@ -1,56 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>index</title>
-	<style>
-		/* Basic styles for readability */
-		body {
-			font-family: sans-serif;
-			max-width: 800px;
-			margin: 2em auto;
-			padding: 0 1em;
-			line-height: 1.6;
-		}
-		img { max-width: 100%; height: auto; }
-		pre { background-color: #f4f4f4; padding: 1em; overflow-x: auto; }
-		code { font-family: monospace; }
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wind Study</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background: white;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        main {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+        }
+
+        nav {
+            position: fixed;
+            top: 40px;  /* Increased from 20px */
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 100;
+        }
+
+        .info {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(0,0,0,0.5);
+            z-index: 100;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: 500;  /* Changed from normal to 500 for bolder weight */
+            letter-spacing: 0.02em;
+            opacity: 0.8;  /* Slightly increased opacity for better visibility */
+        }
+
+        .subtitle {
+            font-size: 14px;
+            font-weight: normal;
+            color: rgba(0,0,0,0.5);
+            margin-top: 8px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+        }
+
+        a:hover {
+            border-bottom-color: rgba(0,0,0,0.4);
+        }
+    </style>
 </head>
 <body>
-	<!--
-You can add style tags and also script:src tags into markdown
-if you use https://marketplace.cursorapi.com/items?itemName=fmoronzirfas.markdown-to-html
-It will be included into your html file
-Just make sure to keep a line break between the markdown tags and the style/script tags
--->
-<style>
-html,
-body {
-height: 100%;
-}
+    <nav>
+        <h1 class="title">Wind Study</h1>
+        <p class="subtitle">A generative study of wind movement and grass interaction</p>
+    </nav>
+    
+    <main>
+        <!-- p5.js will create canvas here -->
+    </main>
 
-body {
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-}
-main {
-height: 100%;
-display: flex;
-justify-content: center;
-flex-direction: column;
-align-items: flex-end;
-}
-</style>
-<h1>hello world</h1>
-<main>
-<div id="sketch"></div>
-<script src="lib/p5.min.js"></script>
-<script src="index.js"></script>
-</main>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
