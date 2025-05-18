@@ -1,3 +1,10 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('video-background');
+    video.play().catch(function(error) {
+        console.log("Video autoplay failed:", error);
+    });
+});
+
 // Settings for particle behavior
 const settings = {
   particleCount: 80,    // Reduced from 200
@@ -70,7 +77,9 @@ class Particle {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  // Create canvas and position it at the bottom half
+  let canvas = createCanvas(windowWidth, windowHeight * 0.5);
+  canvas.parent('particle-container');
   // Initialize particles
   particles = Array(settings.particleCount).fill().map(() => new Particle());
 }
@@ -88,7 +97,6 @@ function draw() {
 
 // Handle window resizing
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-  // Reset particles on resize
+  resizeCanvas(windowWidth, windowHeight * 0.5);
   particles.forEach(p => p.reset());
 }
