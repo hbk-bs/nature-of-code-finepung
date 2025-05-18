@@ -22,16 +22,18 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            padding-top: 160px; /* Slightly reduced from 180px to tighten spacing */
+            padding-top: 160px; /* Increased to make room for longer text */
+            max-width: 800px;
+            margin: 0 auto;
+            align-items: center; /* Added to help center children */
         }
 
         nav {
-            position: absolute;
-            top: 40px;  /* Increased from 20px */
-            left: 0;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            z-index: 100;
         }
 
         .info {
@@ -89,29 +91,33 @@
 
         .text-section {
             width: 100%;
-            padding: 2rem;
-            background: white;
-            margin-top: 2rem; /* Add space before text */
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 2rem;
         }
 
         .text-section p {
             max-width: 800px;
             margin: 0 auto;
-            line-height: 1.6;
+            line-height: 1.8; /* Increased for better readability of longer text */
             color: #333;  /* Already matches */
         }
 
         #particle-container {
             width: 100%;
-            height: 60vh; /* Increased from 50vh */
-            margin-bottom: 0; /* Remove bottom margin */
+            height: 60vh;
+            margin: auto;  /* Changed from margin-top: auto to center vertically and horizontally */
+            max-width: 800px;
+            display: flex;  /* Added to help with centering */
+            justify-content: center;  /* Center horizontally */
+            align-items: center;  /* Center vertically */
         }
 
         .video-container {
             width: 40%;
-            height: 40vh;
-            margin: 0;  /* Remove margin since it's handled by media-container */
-            max-width: 600px;
+            height: 20vh;
+            margin: 0;
+            max-width: 320px; /* 40% of 800px */
         }
 
         #video-background {
@@ -125,6 +131,7 @@
             padding: 1rem 2rem;
             text-align: center;
             background: transparent;
+            max-width: 800px;
         }
 
         .video-description p {
@@ -137,15 +144,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;  /* Reduced from 10px to bring elements much closer */
+            gap: 10px;
             width: 100%;
+            max-width: 800px;
             margin: 2rem auto;
         }
 
         .side-image {
-            width: 20%;  /* Adjust as needed */
-            height: 40vh;
-            max-width: 300px;
+            width: 20%;
+            height: 20vh;
+            max-width: 160px; /* 20% of 800px */
         }
 
         .side-image img {
@@ -169,39 +177,43 @@
     </style>
 </head>
 <body>
-    <nav>
-        <h1 class="title">Nature of Code</h1>
-        <p class="subtitle">Bewegung von Wind in der Natur</p>
-        <div class="text-section">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="#particle-container" class="jump-link">Jump to animation ↓</a></p>
-        </div>
-    </nav>
-
     <main>
-        <!-- Media section with three columns -->
-        <div class="media-container">
-            <div class="side-image">
-                <img src="https://hbk-bs.github.io/the-archives-finepung/images/gras.HEIC" alt="Left side image">
-            </div>
+        <nav>
+            <h1 class="title">Nature of Code</h1>
+            <p class="subtitle">Bewegung von Wind in der Natur</p>
             
-            <div class="video-container">
-                <video id="video-background" autoplay muted loop playsinline>
-                    <source src="https://hbk-bs.github.io/the-archives-finepung/images/wind-video.MOV" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+            <!-- First text section with longer content -->
+            <div class="text-section">
+                <p>Auf Amrum habe ich viele Naturphänomene beobachtet und aufgenommen. Am meisten hat mich die Bewegung des Windes fasziniert. Wind ist etwas Unsichtbares und doch ständig spürbar. Selbst an eher windstillen Tagen war seine Präsenz auf der Insel irgendwie immer da: im leichten Rascheln der Dünengräser oder wie sich die Wolken bewegten.
+					Diese Bewegung des Windes in Code zu übersetzen, war eine besondere Herausforderung. Denn Wind ist lebendig und zufällig und genau das lässt sich schwer in feste Regeln und digitale Logik fassen. Mir hat es geholfen, dem Zufall Raum zu geben und bewusste Unregelmäßigkeit einzubauen. Unter anderem war es auch hilfreich die Abstrahierte Version, doch noch kenntlich zu machen. Also die Partikel an Linien zu binden um die Bewegung der Gräser besser nachzuahmen.
+					Hier habe ich nur ein Beispiel, wie Wind in Code übersetzt werden kann, von etlich vielen anderen Möglichkeiten. <a href="#particle-container" class="jump-link">Zur Animation ↓</a></p>
             </div>
 
-            <div class="side-image">
-                <img src="https://hbk-bs.github.io/the-archives-finepung/images/landschaft.HEIC" alt="Right side image">
+            <!-- Media section between texts -->
+            <div class="media-container">
+                <div class="side-image">
+                    <img src="https://hbk-bs.github.io/the-archives-finepung/images/gras.HEIC" alt="Left side image">
+                </div>
+                
+                <div class="video-container">
+                    <video id="video-background" autoplay muted loop playsinline>
+                        <source src="https://hbk-bs.github.io/the-archives-finepung/images/wind-video.MOV" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div class="side-image">
+                    <img src="https://hbk-bs.github.io/the-archives-finepung/images/landschaft.HEIC" alt="Right side image">
+                </div>
             </div>
-        </div>
 
-        <!-- Video description -->
-        <div class="text-section video-description">
-            <p>This video captures the natural movement of grass in the wind, serving as inspiration for the generative animation below.</p>
-        </div>
+            <!-- Second text section -->
+            <div class="text-section video-description">
+                <p>Das Video zeigt die natürlichen Bewegungen von Wind in Gräsern. Es diente als meine Hauptinspiration für die Animation unten zu sehen.</p>
+            </div>
+        </nav>
 
-        <!-- Particle animation at the very bottom -->
+        <!-- Particle animation stays at the bottom -->
         <div id="particle-container"></div>
     </main>
 
