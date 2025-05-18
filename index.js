@@ -78,7 +78,7 @@ class Particle {
 
 function setup() {
   // Create canvas and position it at the bottom half
-  let canvas = createCanvas(windowWidth, windowHeight * 0.5);
+  let canvas = createCanvas(windowWidth, windowHeight * 0.6); // Increased height for more prominence
   canvas.parent('particle-container');
   // Initialize particles
   particles = Array(settings.particleCount).fill().map(() => new Particle());
@@ -97,6 +97,32 @@ function draw() {
 
 // Handle window resizing
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight * 0.5);
+  resizeCanvas(windowWidth, windowHeight * 0.6);
   particles.forEach(p => p.reset());
 }
+
+// Add after your existing p5.js setup code
+
+function setupSideCanvases() {
+    const leftCanvas = document.getElementById('left-canvas');
+    const rightCanvas = document.getElementById('right-canvas');
+    
+    // Set canvas dimensions
+    leftCanvas.width = leftCanvas.offsetWidth;
+    leftCanvas.height = leftCanvas.offsetHeight;
+    rightCanvas.width = rightCanvas.offsetWidth;
+    rightCanvas.height = rightCanvas.offsetHeight;
+    
+    // Get canvas contexts for drawing
+    const leftCtx = leftCanvas.getContext('2d');
+    const rightCtx = rightCanvas.getContext('2d');
+    
+    // Initialize with background color
+    leftCtx.fillStyle = '#f5f5f5';
+    leftCtx.fillRect(0, 0, leftCanvas.width, leftCanvas.height);
+    rightCtx.fillStyle = '#f5f5f5';
+    rightCtx.fillRect(0, 0, rightCanvas.width, rightCanvas.height);
+}
+
+// Call the setup function when the document is loaded
+document.addEventListener('DOMContentLoaded', setupSideCanvases);

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wind Study</title>
+    <title>Wo der Wind dich trägt</title>
     <style>
         * {
             margin: 0;
@@ -18,27 +18,11 @@
             min-height: 100vh;
         }
 
-        .video-container {
-            width: 100%;
-            height: 50vh;
-            overflow: hidden;
-        }
-
-        #video-background {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        #particle-container {
-            width: 100%;
-            height: 50vh;
-        }
-
         main {
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            min-height: 100vh;
+            padding-top: 160px; /* Slightly reduced from 180px to tighten spacing */
         }
 
         nav {
@@ -57,22 +41,40 @@
             width: 100%;
             text-align: center;
             font-size: 14px;
-            color: rgba(0,0,0,0.5);
+            color: #333;  /* Changed from rgba to match other text */
             z-index: 100;
         }
 
         .title {
-            font-size: 24px;
-            font-weight: 500;  /* Changed from normal to 500 for bolder weight */
+            font-size: 32px;  /* Increased from 24px */
+            font-weight: 500;
             letter-spacing: 0.02em;
-            opacity: 0.8;  /* Slightly increased opacity for better visibility */
+            color: #333;
+            padding-bottom: 8px; /* Increased padding to match larger font */
+            border-bottom: none;
+            position: relative; /* For the pseudo-element */
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            left: -100vw; /* Extend to the left */
+            right: -100vw; /* Extend to the right */
+            bottom: 0;
+            height: 1px;
+            background: #333;
+            z-index: -1;
         }
 
         .subtitle {
-            font-size: 14px;
+            font-size: 16px;          /* Increased from 14px to match paragraph */
             font-weight: normal;
-            color: rgba(0,0,0,0.5);
+            color: #333;              /* Changed from rgba to match paragraph */
             margin-top: 8px;
+            line-height: 1.6;         /* Added to match paragraph */
+            max-width: 800px;         /* Added to match paragraph width */
+            margin-left: auto;        /* Center the text */
+            margin-right: auto;       /* Center the text */
         }
 
         a {
@@ -89,40 +91,118 @@
             width: 100%;
             padding: 2rem;
             background: white;
+            margin-top: 2rem; /* Add space before text */
         }
 
         .text-section p {
             max-width: 800px;
             margin: 0 auto;
             line-height: 1.6;
+            color: #333;  /* Already matches */
+        }
+
+        #particle-container {
+            width: 100%;
+            height: 60vh; /* Increased from 50vh */
+            margin-bottom: 0; /* Remove bottom margin */
+        }
+
+        .video-container {
+            width: 40%;
+            height: 40vh;
+            margin: 0;  /* Remove margin since it's handled by media-container */
+            max-width: 600px;
+        }
+
+        #video-background {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Changed back from 'contain' to 'cover' */
+        }
+
+        .video-description {
+            margin: 0 auto 2rem auto;
+            padding: 1rem 2rem;
+            text-align: center;
+            background: transparent;
+        }
+
+        .video-description p {
+            font-size: 16px;
+            max-width: 600px;  /* Match video container width */
+            color: #333;  /* Added to match other text */
+        }
+
+        .media-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;  /* Reduced from 10px to bring elements much closer */
+            width: 100%;
+            margin: 2rem auto;
+        }
+
+        .side-image {
+            width: 20%;  /* Adjust as needed */
+            height: 40vh;
+            max-width: 300px;
+        }
+
+        .side-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .jump-link {
+            display: inline-block;
+            margin-left: 1rem;
             color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #333;
+            transition: opacity 0.2s;
+        }
+
+        .jump-link:hover {
+            opacity: 0.7;
         }
     </style>
 </head>
 <body>
     <nav>
-        <h1 class="title">Wind Study</h1>
-        <p class="subtitle">A generative study of wind movement and grass interaction</p>
+        <h1 class="title">Nature of Code</h1>
+        <p class="subtitle">Bewegung von Wind in der Natur</p>
         <div class="text-section">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <a href="#particle-container" class="jump-link">Jump to animation ↓</a></p>
         </div>
     </nav>
 
     <main>
-        <div class="video-container">
-            <video id="video-background" autoplay muted loop playsinline>
-                <source src="path/to/your/video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+        <!-- Media section with three columns -->
+        <div class="media-container">
+            <div class="side-image">
+                <img src="https://hbk-bs.github.io/the-archives-finepung/images/gras.HEIC" alt="Left side image">
+            </div>
+            
+            <div class="video-container">
+                <video id="video-background" autoplay muted loop playsinline>
+                    <source src="https://hbk-bs.github.io/the-archives-finepung/images/wind-video.MOV" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div class="side-image">
+                <img src="https://hbk-bs.github.io/the-archives-finepung/images/landschaft.HEIC" alt="Right side image">
+            </div>
         </div>
 
-        <div class="text-section">
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <!-- Video description -->
+        <div class="text-section video-description">
+            <p>This video captures the natural movement of grass in the wind, serving as inspiration for the generative animation below.</p>
         </div>
 
-        <div id="particle-container">
-            <!-- p5.js canvas will be created here -->
-        </div>
+        <!-- Particle animation at the very bottom -->
+        <div id="particle-container"></div>
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
